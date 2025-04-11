@@ -1,6 +1,5 @@
-{
-  "userId": 1,
-  "id": 1,
-  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-}
+[
+  { "id": "smith", "phone": "010-1234-5678" },
+  { "id": "john", "phone": "010-9876-5432" },
+  { "id": "david", "phone": "010-5678-1234" }
+]
