@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제 소개를 하겠습니다.</title>
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+    <script defer src="{% static 'home/js/script.js' %}"></script>
+</head>
+<body>
+
+    <main class="container">
+        <!-- 페이지 1: 홈 -->
+        <section id="home">
+            <div class="content">
+                <h1 class="fade-in">안녕하세요,<br>최유나입니다.</h1>
+                <p class="fade-in">세상에 긍정적인 영향을 주는 개발자를 꿈꿉니다.</p>
+            </div>
+            <div class="scroll-down">
+                <span>Scroll Down</span>
+                <div class="arrow"></div>
+            </div>
+        </section>
+
+        <!-- 페이지 2: 소개 -->
+        <section id="about">
+            <div class="content">
+                <h2 class="fade-in">ABOUT ME</h2>
+                <div class="about-container fade-in">
+                    <div class="intro">
+                        <h3># Who I Am</h3>
+                        <p>
+                            저는 문제 해결 과정 자체를 즐기는 개발자입니다. 
+                            복잡한 문제를 마주했을 때, 이를 논리적으로 분해하고 최적의 해결책을 찾아내는 과정에서 큰 성취감을 느낍니다. 
+                            항상 새로운 기술을 배우는 것에 대한 두려움이 없으며, 동료들과의 협업과 소통을 중요하게 생각합니다.
+                        </p>
+                    </div>
+                    <div class="skills">
+                        <h3># Skills</h3>
+                        <ul>
+                            <li><strong>Frontend:</strong> HTML, CSS, JavaScript, React</li>
+                            <li><strong>Backend:</strong> Node.js, Express, Python</li>
+                            <li><strong>Database:</strong> MySQL, MongoDB</li>
+                            <li><strong>Tools:</strong> Git, Docker, Figma</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 페이지 3: 연락처 -->
+        <section id="contact">
+            <div class="content">
+                <h2 class="fade-in">CONTACT & PROJECTS</h2>
+                <div class="contact-container fade-in">
+                    <div class="projects">
+                        <h3># Projects</h3>
+                        <p>진행했던 프로젝트들을 이곳에 멋지게 보여주세요. 링크나 간단한 설명을 추가할 수 있습니다.</p>
+                        <ul>
+                            <li><a href="#">Project A - 쇼핑몰 웹사이트</a></li>
+                            <li><a href="#">Project B - 실시간 채팅 애플리케이션</a></li>
+                            <li><a href="#">Project C - 데이터 시각화 대시보드</a></li>
+                        </ul>
+                    </div>
+                    <div class="links">
+                        <h3># Get In Touch</h3>
+                        <p>아래 채널을 통해 언제든지 편하게 연락 주세요.</p>
+                        <ul>
+                            <li><strong>Email:</strong> your.email@example.com</li>
+                            <li><strong>GitHub:</strong> <a href="https://github.com/your-github" target="_blank">github.com/your-github</a></li>
+                            <li><strong>Blog:</strong> <a href="#" target="_blank">your.blog.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+             <footer>
+                <p>© 2024 Kim Coding. All Rights Reserved.</p>
+            </footer>
+        </section>
+    </main>
+
+    
+</body>
+</html>

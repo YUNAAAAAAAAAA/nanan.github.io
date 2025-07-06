@@ -1,0 +1,167 @@
+/* 기본 스타일 리셋 및 폰트 설정 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    /* 스크롤바 숨기기 (IE, Edge) */
+    -ms-overflow-style: none; 
+    /* 스크롤바 숨기기 (Firefox) */
+    scrollbar-width: none; 
+}
+
+/* 스크롤바 숨기기 (Chrome, Safari) */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* --- 핵심: 스크롤 스냅 컨테이너 --- */
+.container {
+    height: 100vh; /* 컨테이너의 높이를 화면 전체 높이로 설정 */
+    overflow-y: scroll; /* 세로 스크롤을 활성화 */
+    scroll-snap-type: y mandatory; /* Y축(세로)으로 스크롤 스냅을 강제 적용 */
+}
+
+/* 모든 페이지(섹션)의 공통 스타일 */
+section {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start; /* 각 섹션의 시작 부분이 스냅 지점이 됨 */
+    padding: 50px;
+    position: relative;
+}
+
+/* 각 페이지의 콘텐츠 영역 */
+.content {
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #cccccc;
+    font-weight: 400;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #cccccc;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* 페이지 2: 소개 (About) 스타일 */
+#about .about-container, #contact .contact-container {
+    display: flex;
+    gap: 40px;
+    text-align: left;
+}
+
+.about-container > div, .contact-container > div {
+    flex: 1; /* 두 div가 공간을 동일하게 나눠가짐 */
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+/* 페이지 3: 연락처 (Contact) 스타일 */
+#contact footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 0.9rem;
+    color: #888888;
+}
+
+/* 스크롤 다운 애니메이션 */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #ffffff;
+}
+.scroll-down span {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+.arrow {
+    width: 6px;
+    height: 6px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    animation: bounce 2s infinite;
+    margin-top: 10px;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    40% {
+        transform: translateY(-10px) rotate(45deg);
+    }
+    60% {
+        transform: translateY(-5px) rotate(45deg);
+    }
+}
+
+
+/* --- 핵심: JS와 연동되는 페이드인 애니메이션 --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
