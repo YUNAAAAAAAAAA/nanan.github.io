@@ -104,7 +104,7 @@ li {
 /* 페이지 2: 소개 (About) 스타일 */
 #about .about-container, #contact .contact-container {
     display: flex;
-    gap: 40px;
+    gap: 56px;
     text-align: left;
 }
 
