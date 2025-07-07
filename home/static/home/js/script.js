@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sections = document.querySelectorAll('section');
     const container = document.querySelector('.container');
+    const topBtn = document.getElementById('top-btn');
     let currentIndex = 0;
     let isScrolling = false;
     
@@ -66,6 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
     
     container.addEventListener('wheel', handleWheel, { passive: false });
 
+
+    topBtn.addEventListener('click', () => {
+            scrollToSection(0);
+        });
+
+        // 스크롤 위치에 따라 Top 버튼 보이기/숨기기
+        container.addEventListener('scroll', () => {
+            // 첫 번째 페이지의 절반 이상 스크롤되면 버튼을 보여줌
+            if (container.scrollTop > window.innerHeight / 2) {
+                topBtn.classList.add('visible');
+            } else {
+                topBtn.classList.remove('visible');
+            }
+        });
 
     // --- 기존의 페이드인 애니메이션 로직 ---
     if ('IntersectionObserver' in window) {
