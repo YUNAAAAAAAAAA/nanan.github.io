@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'MyCustomFont'; /* 앞으로 CSS에서 사용할 폰트의 이름 (자유롭게 지정) */
+    src: url('../fonts/MyCustomFont.woff2') format('woff2'); /* 폰트 파일의 경로와 포맷 */
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* 기본 스타일 리셋 및 폰트 설정 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
 
@@ -25,9 +32,8 @@ body::-webkit-scrollbar {
 
 /* --- 핵심: 스크롤 스냅 컨테이너 --- */
 .container {
-    height: 100vh; /* 컨테이너의 높이를 화면 전체 높이로 설정 */
+    height: 100vh;
     overflow-y: scroll; /* 세로 스크롤을 활성화 */
-    scroll-snap-type: y mandatory; /* Y축(세로)으로 스크롤 스냅을 강제 적용 */
 }
 
 /* 모든 페이지(섹션)의 공통 스타일 */
@@ -53,7 +59,7 @@ section {
 h1 {
     font-size: 4rem;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.5;
     margin-bottom: 20px;
 }
 

@@ -1,24 +1,83 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Intersection Observer를 지원하는지 확인
+
+    // --- 부드러운 스크롤 로직 ---
+
+    const sections = document.querySelectorAll('section');
+    const container = document.querySelector('.container');
+    let currentIndex = 0;
+    let isScrolling = false;
+    
+    // 애니메이션 총 시간 (밀리초 단위, 1000 = 1초)
+    const animationDuration = 900; 
+
+    const scrollToSection = (index) => {
+        if (isScrolling || index < 0 || index >= sections.length) {
+            return;
+        }
+
+        isScrolling = true;
+        
+        const startPosition = container.scrollTop;
+        const targetPosition = sections[index].offsetTop;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+
+        // Easing 함수 (애니메이션에 가속/감속 효과를 줌)
+        const easeInOutQuad = (t, b, c, d) => {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        };
+
+        const animation = (currentTime) => {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            
+            const run = easeInOutQuad(timeElapsed, startPosition, distance, animationDuration);
+            container.scrollTop = run;
+
+            if (timeElapsed < animationDuration) {
+                requestAnimationFrame(animation);
+            } else {
+                container.scrollTop = targetPosition; // 정확한 위치로 보정
+                currentIndex = index;
+                isScrolling = false;
+            }
+        };
+
+        requestAnimationFrame(animation);
+    };
+
+
+    const handleWheel = (e) => {
+        if (isScrolling) {
+            e.preventDefault();
+            return;
+        }
+        e.preventDefault();
+
+        if (e.deltaY > 0) {
+            scrollToSection(currentIndex + 1);
+        } else {
+            scrollToSection(currentIndex - 1);
+        }
+    };
+    
+    container.addEventListener('wheel', handleWheel, { passive: false });
+
+
+    // --- 기존의 페이드인 애니메이션 로직 ---
     if ('IntersectionObserver' in window) {
-        // 옵저버 생성
         const observer = new IntersectionObserver((entries) => {
-            // entries는 관찰되는 모든 요소를 담은 배열입니다.
             entries.forEach(entry => {
-                // isIntersecting은 요소가 뷰포트와 교차하는지(보이는지) 여부를 나타내는 boolean 값입니다.
                 if (entry.isIntersecting) {
-                    // 요소가 보이면 'visible' 클래스를 추가하여 애니메이션을 트리거합니다.
                     entry.target.classList.add('visible');
                 }
             });
-        }, {
-            threshold: 0.1 // 요소가 10% 보였을 때 콜백 함수를 실행합니다.
-        });
+        }, { threshold: 0.1 });
 
-        // 애니메이션을 적용할 모든 요소를 선택합니다.
         const fadeElements = document.querySelectorAll('.fade-in');
-        
-        // 각 요소를 관찰 대상으로 등록합니다.
         fadeElements.forEach(el => observer.observe(el));
     }
 });
